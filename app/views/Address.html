@@ -11,23 +11,41 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <h1 class="nhsuk-heading-xl">Enter your postcode</h1>
+      <p class="nhsuk-body-m">Enter your postcode to find a pharmacy near you.</p>
 
-      <form class="nhsuk-form" action="/results" method="post">
-        {% from "input/macro.njk" import input %}
+      {% if errors %}
+        <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+          <h2 class="nhsuk-error-summary__title" id="error-summary-title">There is a problem</h2>
+          <div class="nhsuk-error-summary__body">
+            <ul class="nhsuk-list nhsuk-error-summary__list">
+              {% for error in errors %}
+                <li><a href="{{ error.href }}">{{ error.text }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
 
-        {{ input({
-          label: {
-            text: "Enter a full postcode in England"
-          },
-          hint: {
-            text: "For example, LS1 1AB"
-          },
-          id: "postcode",
-          name: "postcode",
-          classes: "nhsuk-input--width-10",
-          autocomplete: "postal-code",
-          spellcheck: false
-        }) }}
+      <form class="nhsuk-form" action="/results" method="post" novalidate>
+        <div class="nhsuk-form-group{% if errors %} nhsuk-form-group--error{% endif %}">
+          <label class="nhsuk-label" for="postcode">Enter a full postcode in England</label>
+          <div id="postcode-hint" class="nhsuk-hint">For example, LS1 1AB</div>
+
+          {% if errors %}
+            <span id="postcode-error" class="nhsuk-error-message">
+              <span class="nhsuk-visually-hidden">Error:</span> {{ errors[0].text }}
+            </span>
+          {% endif %}
+
+          <input class="nhsuk-input nhsuk-input--width-10{% if errors %} nhsuk-input--error{% endif %}"
+            id="postcode"
+            name="postcode"
+            type="text"
+            autocomplete="postal-code"
+            spellcheck="false"
+            value="{{ postcode | default('') }}"
+            aria-describedby="postcode-hint{% if errors %} postcode-error{% endif %}">
+        </div>
 
         <button class="nhsuk-button" type="submit">Find pharmacy</button>
       </form>
