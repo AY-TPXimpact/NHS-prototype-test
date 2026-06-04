@@ -2,12 +2,28 @@
 const express = require('express')
 const router = express.Router()
 
+function isValidPostcode(postcode) {
+  const normalized = postcode.toUpperCase().replace(/\s+/g, '')
+  return /^[A-Z]{1,2}\d[A-Z\d]?\d[A-Z]{2}$/.test(normalized)
+}
+
 router.get('/address', (req, res) => {
   res.render('Address')
 })
 
 router.post('/results', (req, res) => {
   const postcode = req.body && req.body.postcode ? req.body.postcode.trim() : ''
+  const errors = []
+
+  if (!postcode) {
+    errors.push({ text: 'Enter a postcode', href: '#postcode' })
+  } else if (!isValidPostcode(postcode)) {
+    errors.push({ text: 'Enter a valid postcode in England, like LS1 1AB', href: '#postcode' })
+  }
+
+  if (errors.length) {
+    return res.render('Address', { postcode, errors })
+  }
 
   const results = [
     {
@@ -30,7 +46,7 @@ router.post('/results', (req, res) => {
     }
   ]
 
-  res.render('Results', { postcode, results })
+  res.render('Results', { postcode: postcode.toUpperCase(), results })
 })
 
 module.exports = router
