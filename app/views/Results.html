@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% set pageName = "Results" %}
+
+{% block beforeContent %}
+  <a class="nhsuk-back-link" href="/address">
+    Back
+  </a>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">Pharmacies near {{ postcode }}</h1>
+      <p class="nhsuk-body-m">These sample pharmacies are shown for the postcode you entered.</p>
+
+      <dl class="nhsuk-summary-list">
+        {% for pharmacy in results %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">{{ pharmacy.name }}</dt>
+            <dd class="nhsuk-summary-list__value">{{ pharmacy.address }}<br>{{ pharmacy.distance }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+
+      <a class="nhsuk-button" href="/address">Search again</a>
+    </div>
+  </div>
+{% endblock %}
