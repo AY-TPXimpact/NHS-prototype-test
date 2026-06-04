@@ -17,12 +17,23 @@
         {% for pharmacy in results %}
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">{{ pharmacy.name }}</dt>
-            <dd class="nhsuk-summary-list__value">{{ pharmacy.address }}<br>{{ pharmacy.distance }}</dd>
+            <dd class="nhsuk-summary-list__value">
+              <p class="nhsuk-body-m">{{ pharmacy.address }}</p>
+              <p class="nhsuk-body-m">Distance: {{ pharmacy.distance }}</p>
+              <p class="nhsuk-body-m">
+                <a class="nhsuk-link" href="{{ pharmacy.website }}" target="_blank" rel="noopener noreferrer">
+                  Visit website
+                </a>
+              </p>
+            </dd>
           </div>
         {% endfor %}
       </dl>
 
-      <a class="nhsuk-button" href="/address">Search again</a>
+      <div class="nhsuk-button-group">
+        <a class="nhsuk-button" href="/address">Search again</a>
+        <a class="nhsuk-button nhsuk-button--secondary" href="/">Return to home</a>
+      </div>
     </div>
   </div>
 {% endblock %}

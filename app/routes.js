@@ -13,17 +13,20 @@ router.post('/results', (req, res) => {
     {
       name: 'High Street Pharmacy',
       address: '123 High Street, London',
-      distance: '0.5 miles'
+      distance: '0.5 miles',
+      website: 'https://highstreetpharmacy.example'
     },
     {
       name: 'Town Centre Pharmacy',
       address: '17 Market Road, London',
-      distance: '1.2 miles'
+      distance: '1.2 miles',
+      website: 'https://towncentrepharmacy.example'
     },
     {
       name: 'Community Pharmacy',
       address: '2 Station Road, London',
-      distance: '1.8 miles'
+      distance: '1.8 miles',
+      website: 'https://communitypharmacy.example'
     }
   ]
 
