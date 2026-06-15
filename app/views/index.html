@@ -17,7 +17,7 @@
   service name is needed. You can also reuse this variable
   within the <h1>, where they are the same.
 -->
-{% set pageName = "" %}
+{% set pageName = "Find a pharmacy" %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
@@ -32,32 +32,19 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">Find a pharmacy</h1>
+      <p class="nhsuk-body-m">Find a pharmacy near you, or one that offers the services you need.</p>
 
-      <h1 class="nhsuk-heading-xl">
-        Find a pharmacy
-      </h1>
-      <p class="nhsuk-body-m">
-        Find a pharmacy near you, or one that offers the services you need.
+      <h2 class="nhsuk-heading-m">You will need:</h2>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>Your postcode</li>
+        <li>Information about the services you need</li>
+      </ul>
 
-        <p class="nhsuk-body-m">
-          You will need:
-        </p>
-        <ul class="nhsuk-list nhsuk-list--bullet">
-          <li>
-            Your postcode
-          </li>
-          <li>
-            Information about the services you need
-          </li>
-        </ul>
+      <h4 class="nhsuk-heading-s">Before you start</h4>
+      <p class="nhsuk-body-m">You can only use this service if you are in England. If you are in Scotland, Wales or Northern Ireland, please contact your local NHS for help finding a pharmacy.</p>
 
-        <h4 class="nhsuk-heading-s">Before you start</h4>
-        <p class="nhsuk-body-m">
-          You can only use this service if you are in England. If you are in Scotland, Wales or Northern Ireland, please contact your local NHS for help finding a pharmacy.  
-        </p>
-
-        <a class="nhsuk-button" href="/address">Start now</a>
-
+      <a class="nhsuk-button" href="/address">Start now</a>
     </div>
   </div>
 {% endblock %}

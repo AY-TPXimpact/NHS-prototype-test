@@ -1,13 +1,13 @@
 {% extends 'layout.html'%}
-{% set pageName = "Address" %}
+{% set pageName = "Enter your postcode" %}
 
 {% block beforeContent %}
   <div class="nhsuk-width-container">
     {% include '_notification-banner.html' %}
+    <a class="nhsuk-back-link" href="javascript:history.back()">
+      Back
+    </a>
   </div>
-  <a class="nhsuk-back-link" href="/index">
-    Back
-  </a>
 {% endblock %}
 
 {% block content %}
