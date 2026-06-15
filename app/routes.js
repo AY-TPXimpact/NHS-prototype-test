@@ -27,22 +27,115 @@ router.post('/results', (req, res) => {
 
   const results = [
     {
-      name: 'High Street Pharmacy',
-      address: '123 High Street, London',
-      distance: '0.5 miles',
-      website: 'https://highstreetpharmacy.example'
+      name: 'Riverside Pharmacy',
+      address: '14 Cornwall Road, Waterloo, London, SE1 675',
+      website: 'https://riversidepharmacy.example',
+      websiteText: 'Riverside pharmacy website',
+      openUntil: '6:30pm',
+      phone: '02 3544 4334',
+      phoneHref: 'tel:0235444334',
+      email: 'riversidepharmacy@gmail.com',
+      emailHref: 'mailto:riversidepharmacy@gmail.com',
+      services: [
+        'Pharmacy First',
+        'Blood pressure check',
+        'Flu vaccination',
+        'NHS repeat prescription'
+      ],
+      bookingOptions: [
+        {
+          text: 'Book through NHS booking services',
+          href: 'https://www.nhs.uk/nhs-services/online-services/',
+          external: true
+        },
+        {
+          text: 'Book through pharmacy’s website',
+          href: 'https://riversidepharmacy.example',
+          external: true
+        },
+        {
+          text: 'Book by calling 02 3544 4334',
+          href: 'tel:0235444334',
+          external: false
+        }
+      ],
+      access: 'Consultation room, car parking, disabled car parking, step-free access',
+      secondaryBookingText: 'Book through NHS booking services',
+      secondaryBookingHref: 'https://www.nhs.uk/nhs-services/online-services/'
     },
     {
-      name: 'Town Centre Pharmacy',
-      address: '17 Market Road, London',
-      distance: '1.2 miles',
-      website: 'https://towncentrepharmacy.example'
+      name: 'Harborne Pharmacy',
+      address: '22 Harborne Road, Birmingham, B17 9QJ',
+      website: 'https://harbornepharmacy.example',
+      websiteText: 'Harborne pharmacy website',
+      openUntil: '7:00pm',
+      phone: '0121 555 0198',
+      phoneHref: 'tel:01215550198',
+      email: 'harbornepharmacy@example.com',
+      emailHref: 'mailto:harbornepharmacy@example.com',
+      services: [
+        'Pharmacy First',
+        'Blood pressure check',
+        'Flu vaccination',
+        'NHS repeat prescription'
+      ],
+      bookingOptions: [
+        {
+          text: 'Book through NHS booking services',
+          href: 'https://www.nhs.uk/nhs-services/online-services/',
+          external: true
+        },
+        {
+          text: 'Book through Harborne Pharmacy website',
+          href: 'https://harbornepharmacy.example',
+          external: true
+        },
+        {
+          text: 'Book by calling 0121 555 0198',
+          href: 'tel:01215550198',
+          external: false
+        }
+      ],
+      access: 'Consultation room, disabled parking, step-free access',
+      secondaryBookingText: 'Book through NHS booking services',
+      secondaryBookingHref: 'https://www.nhs.uk/nhs-services/online-services/'
     },
     {
-      name: 'Community Pharmacy',
-      address: '2 Station Road, London',
-      distance: '1.8 miles',
-      website: 'https://communitypharmacy.example'
+      name: 'Waterside Pharmacy',
+      address: '8 Waterside Lane, Cambridge, CB1 2LE',
+      website: 'https://watersidepharmacy.example',
+      websiteText: 'Waterside pharmacy website',
+      openUntil: '7:30pm',
+      phone: '01223 555 0123',
+      phoneHref: 'tel:012235550123',
+      email: 'watersidepharmacy@example.com',
+      emailHref: 'mailto:watersidepharmacy@example.com',
+      services: [
+        'Pharmacy First',
+        'Blood pressure check',
+        'Flu vaccination',
+        'NHS repeat prescription'
+      ],
+      bookingOptions: [
+        {
+          text: 'Book through NHS booking services',
+          href: 'https://www.nhs.uk/nhs-services/online-services/',
+          external: true
+        },
+        {
+          text: 'Book through Waterside Pharmacy website',
+          href: 'https://watersidepharmacy.example',
+          external: true
+        },
+        {
+          text: 'Book by calling 01223 555 0123',
+          href: 'tel:012235550123',
+          external: false
+        }
+      ],
+      access: 'Consultation room, car parking, disabled car parking, step-free access',
+      secondaryBookingText: 'Book through NHS booking services',
+      secondaryBookingHref: 'https://www.nhs.uk/nhs-services/online-services/'
     }
   ]
 

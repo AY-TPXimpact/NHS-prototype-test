@@ -2,3 +2,55 @@
 @import "nhsuk-frontend/dist/nhsuk";
 
 // Add your custom CSS/Sass styles below.
+
+// Make postcode input full width on mobile
+@media (max-width: 40.0625em) {
+  #postcode {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.nhsuk-results-list {
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.nhsuk-card.nhsuk-result-card {
+  padding: 16px !important;
+}
+
+.nhsuk-result-card {
+  background-color: #ffffff;
+  border: 1px solid #d8dde0;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.nhsuk-result-card:last-child {
+  margin-bottom: 0;
+}
+
+.nhsuk-result-card .nhsuk-heading-m {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.nhsuk-result-card p,
+.nhsuk-result-card ul {
+  margin-bottom: 0.75rem;
+}
+
+.nhsuk-result-card .nhsuk-list--bullet {
+  margin-left: 0;
+}
+
+.nhsuk-result-card .nhsuk-list--bullet li {
+  margin-bottom: 0.5rem;
+}
+
+.nhsuk-result-card .nhsuk-link {
+  word-break: break-word;
+}

@@ -11,24 +11,79 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <h1 class="nhsuk-heading-xl">Pharmacies near {{ postcode }}</h1>
-      <p class="nhsuk-body-m">These sample pharmacies are shown for the postcode you entered.</p>
+      <h6 class="nhsuk-heading-s">Within 0.5 miles</h6>
 
-      <dl class="nhsuk-summary-list">
+      <div class="nhsuk-results-list">
         {% for pharmacy in results %}
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">{{ pharmacy.name }}</dt>
-            <dd class="nhsuk-summary-list__value">
+          <div class="nhsuk-card nhsuk-result-card">
+            <div class="nhsuk-card__content">
+              <h3 class="nhsuk-card__heading nhsuk-heading-m">{{ pharmacy.name }}</h3>
               <p class="nhsuk-body-m">{{ pharmacy.address }}</p>
-              <p class="nhsuk-body-m">Distance: {{ pharmacy.distance }}</p>
               <p class="nhsuk-body-m">
                 <a class="nhsuk-link" href="{{ pharmacy.website }}" target="_blank" rel="noopener noreferrer">
-                  Visit website
+                  {{ pharmacy.websiteText }}
                 </a>
               </p>
-            </dd>
+
+              {% if loop.index > 1 %}
+                <details class="nhsuk-details nhsuk-details--border">
+                  <summary class="nhsuk-details__summary">
+                    <span class="nhsuk-details__summary-text">Read more</span>
+                  </summary>
+                  <div class="nhsuk-details__text">
+                    <p class="nhsuk-body-m">Open until {{ pharmacy.openUntil }}</p>
+                    <p class="nhsuk-body-m">Phone: <a class="nhsuk-link" href="{{ pharmacy.phoneHref }}">{{ pharmacy.phone }}</a></p>
+                    <p class="nhsuk-body-m">Email: <a class="nhsuk-link" href="{{ pharmacy.emailHref }}">{{ pharmacy.email }}</a></p>
+
+                    <p class="nhsuk-body-m">This pharmacy can help you with</p>
+                    <ul class="nhsuk-list nhsuk-list--bullet">
+                      {% for service in pharmacy.services %}
+                        <li>{{ service }}</li>
+                      {% endfor %}
+                    </ul>
+
+                    <p class="nhsuk-body-m">This pharmacy accepts walk-ins and appointments</p>
+                    <ul class="nhsuk-list nhsuk-list--bullet">
+                      {% for booking in pharmacy.bookingOptions %}
+                        <li>
+                          <a class="nhsuk-link" href="{{ booking.href }}"{% if booking.external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                            {{ booking.text }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+
+                    <p class="nhsuk-body-m">{{ pharmacy.access }}</p>
+                    <p class="nhsuk-body-m"><a class="nhsuk-link" href="{{ pharmacy.secondaryBookingHref }}" target="_blank" rel="noopener noreferrer">{{ pharmacy.secondaryBookingText }}</a></p>
+                  </div>
+                </details>
+              {% else %}
+                <p class="nhsuk-body-m">Open until {{ pharmacy.openUntil }}</p>
+                <p class="nhsuk-body-m">Phone: <a class="nhsuk-link" href="{{ pharmacy.phoneHref }}">{{ pharmacy.phone }}</a></p>
+                <p class="nhsuk-body-m">Email: <a class="nhsuk-link" href="{{ pharmacy.emailHref }}">{{ pharmacy.email }}</a></p>
+                <p class="nhsuk-body-m">This pharmacy can help you with</p>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                  {% for service in pharmacy.services %}
+                    <li>{{ service }}</li>
+                  {% endfor %}
+                </ul>
+                <p class="nhsuk-body-m">This pharmacy accepts walk-ins and appointments</p>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                  {% for booking in pharmacy.bookingOptions %}
+                    <li>
+                      <a class="nhsuk-link" href="{{ booking.href }}"{% if booking.external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                        {{ booking.text }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <p class="nhsuk-body-m">{{ pharmacy.access }}</p>
+                <p class="nhsuk-body-m"><a class="nhsuk-link" href="{{ pharmacy.secondaryBookingHref }}" target="_blank" rel="noopener noreferrer">{{ pharmacy.secondaryBookingText }}</a></p>
+              {% endif %}
+            </div>
           </div>
         {% endfor %}
-      </dl>
+      </div>
 
       <div class="nhsuk-button-group">
         <a class="nhsuk-button" href="/address">Search again</a>
